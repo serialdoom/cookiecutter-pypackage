@@ -10,5 +10,6 @@
   "create_author_file": "y",
   "use_pytest": "n",
   "open_source_license": "MIT",
-  "use_pypi_deployment_with_travis": "n"
+  "use_pypi_deployment_with_travis": "n",
+  "command_line_interface": "n"
 }
