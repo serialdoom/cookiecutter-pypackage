@@ -90,8 +90,8 @@ dist: clean ## builds source and wheel package
 	python setup.py bdist_wheel
 	ls -l dist
 tag:                       
-    git tag $(shell python ./{{cookiecutter.project_slug}}/{{cookiecutter.project_slug}}.py -V 2>&1 | cut -d ' ' -f2)
-    git push --tags
+	git tag $(shell python ./{{cookiecutter.project_slug}}/{{cookiecutter.project_slug}}.py -V 2>&1 | cut -d ' ' -f2)
+	git push --tags
     
 install: clean ## install the package to the active Python's site-packages
 	pip install --user --force-reinstall .
