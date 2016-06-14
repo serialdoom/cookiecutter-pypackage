@@ -2,7 +2,7 @@
 
 
 def get_version():
-    return '{{ cookiecutter.version }}' 
+    return '{{ cookiecutter.version }}'
 
 def main_version():
     """ main function to return version if required """
