@@ -18,10 +18,6 @@ requirements = [
     # TODO: put package requirements here
 ]
 
-test_requirements = [
-    # TODO: put package test requirements here
-]
-
 {%- set license_classifiers = {
     'MIT license': 'License :: OSI Approved :: MIT License',
     'BSD license': 'License :: OSI Approved :: BSD License',
@@ -62,6 +58,4 @@ setup(
         '{{ license_classifiers[cookiecutter.open_source_license] }}',
 {%- endif %}
     ],
-    test_suite='tests',
-    tests_require=test_requirements
 )
