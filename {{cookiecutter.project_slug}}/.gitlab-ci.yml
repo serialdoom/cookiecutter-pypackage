@@ -1,5 +1,40 @@
-test:
+stages:
+  - smoke
+  - build
+
+pythoncheck:
+  stage: smoke
+  image: mhristof/python-checks
+  tags:
+    - docker
   script:
-    - make install
-    - make test
     - flake8 .
+    - find ./ -name '*.py' | xargs pylint --disable=import-error
+
+whitespace:
+  stage: smoke
+  image: mhristof/silver_searcher
+  tags:
+    - docker
+  script:
+    - bash -c '! ag --vimgrep " {1,}$"'
+    - bash -c '! ag --ignore Makefile --ignore=*sql --vimgrep "	"'
+
+pip:install:
+  stage: smoke
+  tags:
+    - docker
+  image: python:2.7.12
+  script:
+    - bash -c '[ ! -f setup.py ] && exit 0 || $TRUE'
+    - pip install .
+
+#ipdb_py:
+#  stage: build
+#  tags:
+#    - docker
+#  image: python:2.7.12
+#  script:
+#    - pip install .
+#    - ipdb --help
+#    - ipdb -c ipdb/ipdb_config.yml -t prod -r uk
