@@ -2,21 +2,12 @@
 # -*- coding: utf-8 -*-
 
 
+"""
+setup file for {{cookiecutter.project_slug}}
+"""
+
 from setuptools import setup
 from {{cookiecutter.project_slug}} import get_version
-
-with open('README.rst') as readme_file:
-    readme = readme_file.read()
-
-with open('HISTORY.rst') as history_file:
-    history = history_file.read()
-
-requirements = [
-    {%- if cookiecutter.command_line_interface|lower == 'click' %}
-    'Click>=6.0',
-    {%- endif %}
-    # TODO: put package requirements here
-]
 
 {%- set license_classifiers = {
     'MIT license': 'License :: OSI Approved :: MIT License',
@@ -30,7 +21,6 @@ setup(
     name='{{ cookiecutter.project_slug }}',
     version=get_version(),
     description="{{ cookiecutter.project_short_description }}",
-    long_description=readme + '\n\n' + history,
     author="{{ cookiecutter.full_name.replace('\"', '\\\"') }}",
     author_email='{{ cookiecutter.email }}',
     url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}',
@@ -47,7 +37,8 @@ setup(
     },
     {%- endif %}
     include_package_data=True,
-    install_requires=requirements,
+    install_requires=[
+    ],
 {%- if cookiecutter.open_source_license in license_classifiers %}
     license="{{ cookiecutter.open_source_license }}",
 {%- endif %}
